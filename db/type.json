@@ -1,0 +1,11 @@
+{
+  "type1": {
+  "name": "Audio"
+  },
+  "type2": {
+  "name": "Digital"
+  },
+  "type3": {
+  "name": "Physical"
+  }
+  }
