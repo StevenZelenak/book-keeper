@@ -1,0 +1,38 @@
+{
+  "genre1": {
+  "name": "Action"
+  },
+  "genre2": {
+  "name": "Adventure"
+  },
+  "genre3": {
+  "name": "Comedy"
+  },
+  "genre4": {
+  "name": "Crime"
+  },
+  "genre5": {
+  "name": "Drama"
+  },
+  "genre6": {
+  "name": "Fantasy"
+  },
+  "genre7": {
+  "name": "Horror"
+  },
+  "genre8": {
+  "name": "Romance"
+  },
+  "genre9": {
+  "name": "Political"
+  },
+  "genre10": {
+  "name": "Historical"
+  },
+  "genre11": {
+  "name": "Mystery"
+  },
+  "genre12": {
+  "name": "Science Fiction"
+  }
+  }

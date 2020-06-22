@@ -1,0 +1,14 @@
+{
+  "status1": {
+  "name": "Reading"
+  },
+  "status2": {
+  "name": "Finished"
+  },
+  "status3": {
+  "name": "Wishlist"
+  },
+  "status4": {
+  "name": "n/a"
+  }
+  }
