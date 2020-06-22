@@ -1,6 +1,6 @@
 {
   "book1":{
-  "uid": 1234,
+  "uid": "u7WEk9MPFIR5cpNM1GlGEjORafE2",
   "imageUrl": "",
   "name": "Dune",
   "author": "Frank Herbert",
@@ -11,7 +11,7 @@
   "narrator": ""
   },
   "book2":{
-  "uid": 1234,
+  "uid": "u7WEk9MPFIR5cpNM1GlGEjORafE2",
   "imageUrl": "",
   "name": "The Forever War",
   "author": "Joe Haldeman",
@@ -22,7 +22,7 @@
   "narrator": ""
   },
   "book3":{
-  "uid": 1234,
+  "uid": "1234",
   "imageUrl": "",
   "name": "The Three Body Problem",
   "author": "Liu Cixin",
@@ -33,7 +33,7 @@
   "narrator": ""
   },
   "book4":{
-  "uid": 1234,
+  "uid": "1234",
   "imageUrl": "",
   "name": "Spellmonger",
   "author": "Terry Mancour",
@@ -44,7 +44,7 @@
   "narrator": ""
   },
   "book5":{
-  "uid": 1234,
+  "uid": "u7WEk9MPFIR5cpNM1GlGEjORafE2",
   "imageUrl": "",
   "name": "Cast Under an Alien Sun",
   "author": "Olan Thorensen",
@@ -55,7 +55,7 @@
   "narrator": ""
   },
   "book6":{
-  "uid": 1234,
+  "uid": "u7WEk9MPFIR5cpNM1GlGEjORafE2",
   "imageUrl": "",
   "name": "The Fellowship of the Ring",
   "author": "J. R. R. Tolkien",
@@ -66,7 +66,7 @@
   "narrator": ""
   },
   "book7":{
-  "uid": 1234,
+  "uid": "1234",
   "imageUrl": "",
   "name": "Dreams From My Father",
   "author": "Barack Obama",
@@ -77,7 +77,7 @@
   "narrator": ""
   },
   "book8":{
-  "uid": 1234,
+  "uid": "u7WEk9MPFIR5cpNM1GlGEjORafE2",
   "imageUrl": "",
   "name": "Dracula",
   "author": "Bram Stoker",
@@ -88,7 +88,7 @@
   "narrator": ""
   },
   "book9":{
-  "uid": 4321,
+  "uid": "u7WEk9MPFIR5cpNM1GlGEjORafE2",
   "imageUrl": "",
   "name": "Empires of Light",
   "author": "Jill Jonnes",
@@ -99,7 +99,7 @@
   "narrator": ""
   },
   "book10":{
-  "uid": 4321,
+  "uid": "u7WEk9MPFIR5cpNM1GlGEjORafE2",
   "imageUrl": "",
   "name": "Children of Time",
   "author": "Adrian Tchaikovsky",
