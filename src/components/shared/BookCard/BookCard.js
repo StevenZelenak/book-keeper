@@ -15,9 +15,9 @@ class BookCard extends React.Component {
               <h5 className="card-title">{book.name}</h5>
               <p className="card-text">{book.author}</p>
               <p className="card-text">{this.props.type}</p>
-              {/* <p className="card-text">{this.props.getBookGenres(book.genreId)}</p>
-              <p className="card-text">{this.props.getBookStatus(book.statusId)}</p>
-              <p className="card-text">{book.narrator}</p> */}
+              <p className="card-text">{this.props.genre}</p>
+              <p className="card-text">{this.props.status}</p>
+              <p className="card-text">{book.narrator}</p>
           </div>
         </div>
       </div>

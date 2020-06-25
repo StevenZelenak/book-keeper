@@ -53,9 +53,18 @@ class BookContainer extends React.Component {
   }
 
   render() {
-    const { books, types } = this.state;
+    const {
+      books,
+      types,
+      genres,
+      statuses,
+    } = this.state;
     const buildBookCards = books.map((book) => (
-           <BookCard key={book.id} book={book} type={types.map((type) => (type.id === book.typeId ? type.name : false))} />
+           <BookCard key={book.id} book={book}
+           type={types.map((type) => (type.id === book.typeId ? type.name : false))}
+           genre={genres.map((genre) => (genre.id === book.genreId ? genre.name : false))}
+           status={statuses.map((status) => (status.id === book.statusId ? status.name : false))}
+           />
     ));
 
     if (this.componentDidMount) {
