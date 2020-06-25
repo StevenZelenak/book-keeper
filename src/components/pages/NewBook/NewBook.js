@@ -4,16 +4,6 @@ import './NewBook.scss';
 import authData from '../../../helpers/data/authData';
 import bookData from '../../../helpers/data/bookData';
 
-// "uid": "u7WEk9MPFIR5cpNM1GlGEjORafE2",
-//   "imageUrl": "",
-//   "name": "Children of Time",
-//   "author": "Adrian Tchaikovsky",
-//   "typeId": "type1",
-//   "genreId": "genre12",
-//   "statusId": "status2",
-//   "isFavorite": true,
-//   "narrator": ""
-
 class NewStuff extends React.Component {
   state = {
     bookName: '',
