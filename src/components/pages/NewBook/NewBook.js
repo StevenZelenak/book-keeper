@@ -55,7 +55,7 @@ class NewStuff extends React.Component {
     this.setState({ bookNarrator: e.target.value });
   }
 
-  saveItem = (e) => {
+  saveBook = (e) => {
     e.preventDefault();
     const {
       bookName,
@@ -195,7 +195,7 @@ class NewStuff extends React.Component {
           </div>
           </div>
           <div className="d-flex row justify-content-center mt-3">
-          <button className="btn btn-primary" onClick={this.saveItem}>Save Item</button>
+          <button className="btn btn-primary" onClick={this.saveBook}>Save Book</button>
           </div>
         </form>
       </div>
