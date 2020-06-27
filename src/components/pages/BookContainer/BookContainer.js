@@ -52,6 +52,12 @@ class BookContainer extends React.Component {
     this.getBooks();
   }
 
+  removeBook = (bookId) => {
+    bookData.deleteBook(bookId)
+      .then(() => this.getBooks())
+      .catch((err) => console.error('unable to delete book: ', err));
+  }
+
   render() {
     const {
       books,
@@ -64,6 +70,7 @@ class BookContainer extends React.Component {
            type={types.map((type) => (type.id === book.typeId ? type.name : false))}
            genre={genres.map((genre) => (genre.id === book.genreId ? genre.name : false))}
            status={statuses.map((status) => (status.id === book.statusId ? status.name : false))}
+           removeBook={this.removeBook}
            />
     ));
 

@@ -1,12 +1,16 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import './BookCard.scss';
 
 class BookCard extends React.Component {
+  static propTypes = {
+    removeBook: PropTypes.func.isRequired,
+  }
+
   render() {
-    const { book } = this.props;
+    const { book, removeBook } = this.props;
     const editBook = `/edit/${book.id}`;
     return (
       <div className="BookCard col-3 mb-4">
@@ -19,6 +23,7 @@ class BookCard extends React.Component {
               <p className="card-text">{this.props.genre}</p>
               <p className="card-text">{this.props.status}</p>
               <p className="card-text">{book.narrator}</p>
+              <button className="btn btn-danger" onClick={() => removeBook(book.id)}>Delete</button>
               <Link className="btn btn-warning" to={editBook}>Edit</Link>
           </div>
         </div>
