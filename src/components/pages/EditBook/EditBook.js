@@ -1,8 +1,11 @@
 import React from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Button from 'react-bootstrap/Button';
 import './EditBook.scss';
 import authData from '../../../helpers/data/authData';
 import bookData from '../../../helpers/data/bookData';
+import genreData from '../../../helpers/data/genreData';
 
 class EditBook extends React.Component {
   state = {
@@ -14,7 +17,22 @@ class EditBook extends React.Component {
     bookStatus: '',
     bookFavorite: false,
     bookNarrator: '',
+    genreTitleDropdown: '',
   }
+
+  // genreTitleChange() {
+  //   const { bookGenre } = this.state;
+  //   genreData.getGenres()
+  //     .then((genres) => {
+  //       const titleName = genres.map((genre) => (genre.id === bookGenre ? genre.name : 'one'));
+  //       const indexForName = titleName.findIndex((name) => name.length > 3);
+  //       if (bookGenre.length <= 0) {
+  //         this.setState({ genreTitleDropdown: 'Genre' });
+  //       }
+  //       this.setState({ genreTitleDropdown: titleName[indexForName] });
+  //     })
+  //     .catch((err) => console.error('Could not get genres in the edit dropdown', err));
+  // }
 
   componentDidMount() {
     const { bookId } = this.props.match.params;
@@ -58,6 +76,7 @@ class EditBook extends React.Component {
   genreChange = (e) => {
     e.preventDefault();
     this.setState({ bookGenre: e.target.id });
+    // this.genreTitleChange();
   }
 
   statusChange = (e) => {
@@ -168,10 +187,10 @@ class EditBook extends React.Component {
           </div>
           <div className="d-flex row justify-content-center">
           <div className="form-group mx-3" >
-            <Dropdown>
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Genre
-              </Dropdown.Toggle>
+          <Dropdown as={ButtonGroup}>
+          <Button variant="success" onClick={this.genreTitleChange}>Genre</Button>
+
+          <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
               <Dropdown.Menu>
                 <Dropdown.Item id="genre1" onClick={this.genreChange}>Action</Dropdown.Item>
                 <Dropdown.Item id="genre2" onClick={this.genreChange}>Adventure</Dropdown.Item>
@@ -186,7 +205,7 @@ class EditBook extends React.Component {
                 <Dropdown.Item id="genre11" onClick={this.genreChange}>Mystery</Dropdown.Item>
                 <Dropdown.Item id="genre12" onClick={this.genreChange}>Science Fiction</Dropdown.Item>
               </Dropdown.Menu>
-            </Dropdown>
+              </Dropdown>
           </div>
           <div className="form-group mx-3" >
             <Dropdown>
