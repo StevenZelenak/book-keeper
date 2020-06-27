@@ -13,9 +13,10 @@ loginClickEvent = (e) => {
 
 render() {
   return (
-    <div className="Auth mx-auto">
-      <h1>Login</h1>
-      <button className="btn btn-success" onClick={this.loginClickEvent}>Google Login</button>
+    <div className="Auth align-items-center">
+      <h1>Welcome to Book Keepr</h1>
+      <h3>Where books are forever</h3>
+      <button className="btn btn-primary" onClick={this.loginClickEvent}>Google Login</button>
     </div>
   );
 }

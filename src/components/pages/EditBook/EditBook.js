@@ -1,5 +1,6 @@
 import React from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
 import './EditBook.scss';
@@ -18,6 +19,8 @@ class EditBook extends React.Component {
     bookFavorite: false,
     bookNarrator: '',
     genreTitleDropdown: '',
+    btnTitle: 'Type',
+    genreTitleEvent: 'Genre',
   }
 
   // genreTitleChange() {
@@ -76,7 +79,6 @@ class EditBook extends React.Component {
   genreChange = (e) => {
     e.preventDefault();
     this.setState({ bookGenre: e.target.id });
-    // this.genreTitleChange();
   }
 
   statusChange = (e) => {
@@ -120,6 +122,12 @@ class EditBook extends React.Component {
     bookData.putBook(bookId, updatedBook)
       .then(() => this.props.history.push('/library'))
       .catch((err) => console.error('unable to save book:', err));
+  }
+
+  handleChange = (e) => {
+    const val = e.target.id;
+    this.setState({ btnTitle: val });
+    console.error('btnTitle', this.state.btnTitle);
   }
 
   render() {
@@ -188,12 +196,13 @@ class EditBook extends React.Component {
           <div className="d-flex row justify-content-center">
           <div className="form-group mx-3" >
           <Dropdown as={ButtonGroup}>
-          <Button variant="success" onClick={this.genreTitleChange}>Genre</Button>
+          <Button variant="success">{ this.state.genreTitleEvent }</Button>
 
           <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
               <Dropdown.Menu>
-                <Dropdown.Item id="genre1" onClick={this.genreChange}>Action</Dropdown.Item>
-                <Dropdown.Item id="genre2" onClick={this.genreChange}>Adventure</Dropdown.Item>
+                {/* create a function that loop over and creates these line automatically */}
+                <Dropdown.Item id="genre1" eventKey="Action" onClick={this.genreChange} onSelect={ (e) => { this.setState({ genreTitleEvent: e }); }}>Action</Dropdown.Item>
+                <Dropdown.Item id="genre2" eventKey="Adventure" onClick={this.genreChange} onSelect={ (e) => { this.setState({ genreTitleEvent: e }); }}>Adventure</Dropdown.Item>
                 <Dropdown.Item id="genre3" onClick={this.genreChange}>Comedy</Dropdown.Item>
                 <Dropdown.Item id="genre4" onClick={this.genreChange}>Crime</Dropdown.Item>
                 <Dropdown.Item id="genre5" onClick={this.genreChange}>Drama</Dropdown.Item>
@@ -208,16 +217,11 @@ class EditBook extends React.Component {
               </Dropdown>
           </div>
           <div className="form-group mx-3" >
-            <Dropdown>
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Type
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item id="type1" onClick={this.typeChange}>Audio</Dropdown.Item>
-                <Dropdown.Item id="type2" onClick={this.typeChange}>Digital</Dropdown.Item>
-                <Dropdown.Item id="type3" onClick={this.typeChange}>Physical</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+            <DropdownButton id="dropdown-basic-button" title={this.state.btnTitle}>
+              <Dropdown.Item eventKey="1" id="type1" onSelect={this.handleChange} onClick={this.typeChange}>Audio</Dropdown.Item>
+              <Dropdown.Item onSelect={this.handleChange} eventKey="2" id="type2" onClick={this.typeChange}>Digital</Dropdown.Item>
+              <Dropdown.Item onSelect={this.handleChange} eventKey="3" id="type3" onClick={this.typeChange}>Physical</Dropdown.Item>
+            </DropdownButton>
           </div>
           <div className="form-group mx-3" >
             <Dropdown>

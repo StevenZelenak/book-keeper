@@ -24,7 +24,7 @@ class BookCard extends React.Component {
               <p className="card-text">{this.props.status}</p>
               <p className="card-text">{book.narrator}</p>
               <button className="btn btn-danger" onClick={() => removeBook(book.id)}>Delete</button>
-              <Link className="btn btn-warning" to={editBook}>Edit</Link>
+              <Link className="btn btn-warning" typeArr={this.props.typeArr} to={editBook}>Edit</Link>
           </div>
         </div>
       </div>
