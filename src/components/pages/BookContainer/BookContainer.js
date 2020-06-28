@@ -76,7 +76,7 @@ class BookContainer extends React.Component {
 
     if (this.componentDidMount) {
       return (
-      <div className="MyStuff">
+      <div className="BookContainer">
       <h1>Library</h1>
       <div className="d-flex flex-wrap">
           {buildBookCards}

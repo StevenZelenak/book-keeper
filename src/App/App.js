@@ -15,7 +15,6 @@ import fbConnection from '../helpers/data/connections';
 
 import BookContainer from '../components/pages/BookContainer/BookContainer';
 import EditBook from '../components/pages/EditBook/EditBook';
-import Homepage from '../components/pages/Homepage/Homepage';
 import NewBook from '../components/pages/NewBook/NewBook';
 import Auth from '../components/pages/Auth/Auth';
 import MyNavbar from '../components/shared/MyNavbar/MyNavbar';
@@ -25,7 +24,7 @@ fbConnection();
 const PublicRoute = ({ component: Component, authed, ...rest }) => {
   const routeChecker = (props) => (authed === false
     ? (<Component {...props} />)
-    : (<Redirect to={{ pathname: '/home', state: { from: props.location } }} />));
+    : (<Redirect to={{ pathname: '/library', state: { from: props.location } }} />));
   return <Route {...rest} render={(props) => routeChecker(props)} />;
 };
 
@@ -61,18 +60,13 @@ class App extends React.Component {
         <BrowserRouter>
           <React.Fragment>
             <MyNavbar authed={ this.state.authed }/>
-            <div className="container">
-              <div className="row">
               <Switch>
-                <PrivateRoute path='/home' component={Homepage} authed={this.state.authed}/>
                 <PrivateRoute path='/library' component={BookContainer} authed={this.state.authed}/>
                 <PrivateRoute path='/newbook' component={NewBook} authed={this.state.authed}/>
                 <PrivateRoute path='/edit/:bookId' component={EditBook} authed={this.state.authed}/>
                 <PublicRoute path='/auth' component={Auth} authed={this.state.authed}/>
-                <Redirect from="*" to="/home" />
+                <Redirect from="*" to="/library" />
               </Switch>
-              </div>
-            </div>
           </React.Fragment>
         </BrowserRouter>
       </div>
