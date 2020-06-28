@@ -65,7 +65,7 @@ class App extends React.Component {
                 <PrivateRoute path='/newbook' component={NewBook} authed={this.state.authed}/>
                 <PrivateRoute path='/edit/:bookId' component={EditBook} authed={this.state.authed}/>
                 <PublicRoute path='/auth' component={Auth} authed={this.state.authed}/>
-                <Redirect from="*" to="/home" />
+                <Redirect from="*" to="/library" />
               </Switch>
           </React.Fragment>
         </BrowserRouter>

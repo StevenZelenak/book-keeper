@@ -1,15 +1,26 @@
 import React from 'react';
+
+// React bootstrap files
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
+
+// personal css file
 import './EditBook.scss';
+
+// Date files
 import authData from '../../../helpers/data/authData';
 import bookData from '../../../helpers/data/bookData';
 import genreData from '../../../helpers/data/genreData';
+import typeData from '../../../helpers/data/typeData';
+import statusData from '../../../helpers/data/statusData';
 
 class EditBook extends React.Component {
   state = {
+    genres: [],
+    statuses: [],
+    types: [],
     bookName: '',
     bookImage: '',
     bookAuthor: '',
@@ -18,42 +29,50 @@ class EditBook extends React.Component {
     bookStatus: '',
     bookFavorite: false,
     bookNarrator: '',
-    genreTitleDropdown: '',
-    btnTitle: 'Type',
-    genreTitleEvent: 'Genre',
+    genreName: '',
+    statusName: '',
+    typeName: '',
   }
 
-  // genreTitleChange() {
-  //   const { bookGenre } = this.state;
-  //   genreData.getGenres()
-  //     .then((genres) => {
-  //       const titleName = genres.map((genre) => (genre.id === bookGenre ? genre.name : 'one'));
-  //       const indexForName = titleName.findIndex((name) => name.length > 3);
-  //       if (bookGenre.length <= 0) {
-  //         this.setState({ genreTitleDropdown: 'Genre' });
-  //       }
-  //       this.setState({ genreTitleDropdown: titleName[indexForName] });
-  //     })
-  //     .catch((err) => console.error('Could not get genres in the edit dropdown', err));
-  // }
-
-  componentDidMount() {
+  getSingleBook() {
     const { bookId } = this.props.match.params;
     bookData.getSingleBook(bookId)
       .then((response) => {
         const book = response.data;
-        this.setState({
-          bookName: book.name,
-          bookImage: book.imageUrl,
-          bookAuthor: book.author,
-          bookType: book.typeId,
-          bookGenre: book.genreId,
-          bookStatus: book.statusId,
-          bookFavorite: false,
-          bookNarrator: book.narrator,
-        });
+        typeData.getTypes()
+          .then((types) => {
+            genreData.getGenres()
+              .then((genres) => {
+                statusData.getStatuses()
+                  .then((statuses) => {
+                    const getGenreName = genres.map((genre) => (genre.id === book.genreId ? genre.name : false));
+                    const getStatusName = statuses.map((status) => (status.id === book.statusId ? status.name : false));
+                    const getTypeName = types.map((type) => (type.id === book.typeId ? type.name : false));
+                    this.setState({
+                      bookName: book.name,
+                      bookImage: book.imageUrl,
+                      bookAuthor: book.author,
+                      bookType: book.typeId,
+                      bookGenre: book.genreId,
+                      bookStatus: book.statusId,
+                      bookFavorite: false,
+                      bookNarrator: book.narrator,
+                      types,
+                      genres,
+                      statuses,
+                      genreName: getGenreName,
+                      statusName: getStatusName,
+                      typeName: getTypeName,
+                    });
+                  });
+              });
+          });
       })
       .catch((err) => console.error('unable to get book to edit: ', err));
+  }
+
+  componentDidMount() {
+    this.getSingleBook();
   }
 
   nameChange = (e) => {
@@ -141,7 +160,7 @@ class EditBook extends React.Component {
 
     return (
       <div className="NewScat col-12">
-        <h1>Edit Book</h1>
+        <h1>Editing Book {this.state.bookName}</h1>
         <form className="col-6 offset-3 text-left">
           <div className="form-group">
             <label htmlFor="book-name">Name</label>
@@ -196,45 +215,30 @@ class EditBook extends React.Component {
           <div className="d-flex row justify-content-center">
           <div className="form-group mx-3" >
           <Dropdown as={ButtonGroup}>
-          <Button variant="success">{ this.state.genreTitleEvent }</Button>
-
-          <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
-              <Dropdown.Menu>
-                {/* create a function that loop over and creates these line automatically */}
-                <Dropdown.Item id="genre1" eventKey="Action" onClick={this.genreChange} onSelect={ (e) => { this.setState({ genreTitleEvent: e }); }}>Action</Dropdown.Item>
-                <Dropdown.Item id="genre2" eventKey="Adventure" onClick={this.genreChange} onSelect={ (e) => { this.setState({ genreTitleEvent: e }); }}>Adventure</Dropdown.Item>
-                <Dropdown.Item id="genre3" onClick={this.genreChange}>Comedy</Dropdown.Item>
-                <Dropdown.Item id="genre4" onClick={this.genreChange}>Crime</Dropdown.Item>
-                <Dropdown.Item id="genre5" onClick={this.genreChange}>Drama</Dropdown.Item>
-                <Dropdown.Item id="genre6" onClick={this.genreChange}>Fantasy</Dropdown.Item>
-                <Dropdown.Item id="genre7" onClick={this.genreChange}>Horror</Dropdown.Item>
-                <Dropdown.Item id="genre8" onClick={this.genreChange}>Romance</Dropdown.Item>
-                <Dropdown.Item id="genre9" onClick={this.genreChange}>Political</Dropdown.Item>
-                <Dropdown.Item id="genre10" onClick={this.genreChange}>Historical</Dropdown.Item>
-                <Dropdown.Item id="genre11" onClick={this.genreChange}>Mystery</Dropdown.Item>
-                <Dropdown.Item id="genre12" onClick={this.genreChange}>Science Fiction</Dropdown.Item>
-              </Dropdown.Menu>
-              </Dropdown>
+            <Button variant="success">{ this.state.genreName }</Button>
+              <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
+                <Dropdown.Menu>
+                  {this.state.genres.map((genre) => <Dropdown.Item id={ genre.id } eventKey={ genre.name } onClick={this.genreChange} onSelect={ (e) => { this.setState({ genreName: e }); }}>{ genre.name }</Dropdown.Item>)}
+                </Dropdown.Menu>
+          </Dropdown>
           </div>
           <div className="form-group mx-3" >
-            <DropdownButton id="dropdown-basic-button" title={this.state.btnTitle}>
-              <Dropdown.Item eventKey="1" id="type1" onSelect={this.handleChange} onClick={this.typeChange}>Audio</Dropdown.Item>
-              <Dropdown.Item onSelect={this.handleChange} eventKey="2" id="type2" onClick={this.typeChange}>Digital</Dropdown.Item>
-              <Dropdown.Item onSelect={this.handleChange} eventKey="3" id="type3" onClick={this.typeChange}>Physical</Dropdown.Item>
-            </DropdownButton>
+          <Dropdown as={ButtonGroup}>
+            <Button variant="success">{ this.state.typeName }</Button>
+              <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
+                <Dropdown.Menu>
+                  {this.state.types.map((type) => <Dropdown.Item id={ type.id } eventKey={ type.name } onClick={this.typeChange} onSelect={ (e) => { this.setState({ typeName: e }); }}>{ type.name }</Dropdown.Item>)}
+                </Dropdown.Menu>
+          </Dropdown>
           </div>
           <div className="form-group mx-3" >
-            <Dropdown>
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Status
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item id="status1" onClick={this.statusChange}>Reading</Dropdown.Item>
-                <Dropdown.Item id="status2" onClick={this.statusChange}>Finished</Dropdown.Item>
-                <Dropdown.Item id="status3" onClick={this.statusChange}>Wishlist</Dropdown.Item>
-                <Dropdown.Item id="status4" onClick={this.statusChange}>n/a</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+          <Dropdown as={ButtonGroup}>
+            <Button variant="success">{ this.state.statusName }</Button>
+              <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
+                <Dropdown.Menu>
+                  {this.state.statuses.map((status) => <Dropdown.Item id={ status.id } eventKey={ status.name } onClick={this.statusChange} onSelect={ (e) => { this.setState({ statusName: e }); }}>{ status.name }</Dropdown.Item>)}
+                </Dropdown.Menu>
+          </Dropdown>
           </div>
           </div>
           <div className="d-flex row justify-content-center mt-3">
