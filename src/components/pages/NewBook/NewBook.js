@@ -1,11 +1,19 @@
 import React from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Button from 'react-bootstrap/Button';
 import './NewBook.scss';
 import authData from '../../../helpers/data/authData';
 import bookData from '../../../helpers/data/bookData';
+import typeData from '../../../helpers/data/typeData';
+import genreData from '../../../helpers/data/genreData';
+import statusData from '../../../helpers/data/statusData';
 
-class NewStuff extends React.Component {
+class NewBook extends React.Component {
   state = {
+    genres: [],
+    statuses: [],
+    types: [],
     bookName: '',
     bookImage: '',
     bookAuthor: '',
@@ -14,6 +22,31 @@ class NewStuff extends React.Component {
     bookStatus: '',
     bookFavorite: false,
     bookNarrator: '',
+    genreName: 'Genre',
+    statusName: 'Status',
+    typeName: 'Type',
+  }
+
+  getData() {
+    typeData.getTypes()
+      .then((types) => {
+        genreData.getGenres()
+          .then((genres) => {
+            statusData.getStatuses()
+              .then((statuses) => {
+                this.setState({
+                  types,
+                  genres,
+                  statuses,
+                });
+              });
+          });
+      })
+      .catch((err) => console.error('unable to get data for add: ', err));
+  }
+
+  componentDidMount() {
+    this.getData();
   }
 
   nameChange = (e) => {
@@ -93,7 +126,7 @@ class NewStuff extends React.Component {
     } = this.state;
 
     return (
-      <div className="NewScat col-12">
+      <div className="NewBook col-12">
         <h1>New Book</h1>
         <form className="col-6 offset-3 text-left">
           <div className="form-group">
@@ -148,50 +181,31 @@ class NewStuff extends React.Component {
           </div>
           <div className="d-flex row justify-content-center">
           <div className="form-group mx-3" >
-            <Dropdown>
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Genre
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item id="genre1" onClick={this.genreChange}>Action</Dropdown.Item>
-                <Dropdown.Item id="genre2" onClick={this.genreChange}>Adventure</Dropdown.Item>
-                <Dropdown.Item id="genre3" onClick={this.genreChange}>Comedy</Dropdown.Item>
-                <Dropdown.Item id="genre4" onClick={this.genreChange}>Crime</Dropdown.Item>
-                <Dropdown.Item id="genre5" onClick={this.genreChange}>Drama</Dropdown.Item>
-                <Dropdown.Item id="genre6" onClick={this.genreChange}>Fantasy</Dropdown.Item>
-                <Dropdown.Item id="genre7" onClick={this.genreChange}>Horror</Dropdown.Item>
-                <Dropdown.Item id="genre8" onClick={this.genreChange}>Romance</Dropdown.Item>
-                <Dropdown.Item id="genre9" onClick={this.genreChange}>Political</Dropdown.Item>
-                <Dropdown.Item id="genre10" onClick={this.genreChange}>Historical</Dropdown.Item>
-                <Dropdown.Item id="genre11" onClick={this.genreChange}>Mystery</Dropdown.Item>
-                <Dropdown.Item id="genre12" onClick={this.genreChange}>Science Fiction</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+          <Dropdown as={ButtonGroup}>
+            <Button variant="success">{ this.state.genreName }</Button>
+              <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
+                <Dropdown.Menu>
+                  {this.state.genres.map((genre) => <Dropdown.Item id={ genre.id } eventKey={ genre.name } onClick={this.genreChange} onSelect={ (e) => { this.setState({ genreName: e }); }}>{ genre.name }</Dropdown.Item>)}
+                </Dropdown.Menu>
+          </Dropdown>
           </div>
           <div className="form-group mx-3" >
-            <Dropdown>
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Type
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item id="type1" onClick={this.typeChange}>Audio</Dropdown.Item>
-                <Dropdown.Item id="type2" onClick={this.typeChange}>Digital</Dropdown.Item>
-                <Dropdown.Item id="type3" onClick={this.typeChange}>Physical</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+          <Dropdown as={ButtonGroup}>
+            <Button variant="success">{ this.state.typeName }</Button>
+              <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
+                <Dropdown.Menu>
+                  {this.state.types.map((type) => <Dropdown.Item id={ type.id } eventKey={ type.name } onClick={this.typeChange} onSelect={ (e) => { this.setState({ typeName: e }); }}>{ type.name }</Dropdown.Item>)}
+                </Dropdown.Menu>
+          </Dropdown>
           </div>
           <div className="form-group mx-3" >
-            <Dropdown>
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Status
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item id="status1" onClick={this.statusChange}>Reading</Dropdown.Item>
-                <Dropdown.Item id="status2" onClick={this.statusChange}>Finished</Dropdown.Item>
-                <Dropdown.Item id="status3" onClick={this.statusChange}>Wishlist</Dropdown.Item>
-                <Dropdown.Item id="status4" onClick={this.statusChange}>n/a</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+          <Dropdown as={ButtonGroup}>
+            <Button variant="success">{ this.state.statusName }</Button>
+              <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
+                <Dropdown.Menu>
+                  {this.state.statuses.map((status) => <Dropdown.Item id={ status.id } eventKey={ status.name } onClick={this.statusChange} onSelect={ (e) => { this.setState({ statusName: e }); }}>{ status.name }</Dropdown.Item>)}
+                </Dropdown.Menu>
+          </Dropdown>
           </div>
           </div>
           <div className="d-flex row justify-content-center mt-3">
@@ -203,4 +217,4 @@ class NewStuff extends React.Component {
   }
 }
 
-export default NewStuff;
+export default NewBook;
