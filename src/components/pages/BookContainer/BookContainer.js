@@ -58,6 +58,13 @@ class BookContainer extends React.Component {
       .catch((err) => console.error('unable to delete book: ', err));
   }
 
+  updateFavorite = (bookId, favoriteValue) => {
+    const newFavValue = !favoriteValue;
+    bookData.patchBook(bookId, newFavValue)
+      .then(() => this.getBooks())
+      .catch((err) => console.error('unable to patch favorite', err));
+  }
+
   render() {
     const {
       books,
@@ -71,14 +78,14 @@ class BookContainer extends React.Component {
            genre={genres.map((genre) => (genre.id === book.genreId ? genre.name : false))}
            status={statuses.map((status) => (status.id === book.statusId ? status.name : false))}
            removeBook={this.removeBook}
+           updateFavorite={this.updateFavorite}
            />
     ));
 
     if (this.componentDidMount) {
       return (
       <div className="BookContainer">
-      <h1>Library</h1>
-      <div className="d-flex flex-wrap">
+      <div className="d-flex flex-wrap mt-5">
           {buildBookCards}
         </div>
       </div>

@@ -1,3 +1,33 @@
 .BookCard {
-  display: block;
+  
+
+  .favorite-color {
+    color: gold;
+    font-size: 1.5rem;
+    padding: 0;
+  }
+
+  .un-favorite-color {
+    color: rgb(68, 64, 64);
+    font-size: 1.5rem;
+    padding: 0;
+  }
+
+  .delete-button {
+    background-color: rgba(220,53,69,.85);
+    border-radius: 50%;
+    width: 35px;
+    height:  35px;
+    padding: 0;
+    font-size: 1.0rem;
+  }
+
+  .edit-button {
+    background-color: rgba(40,167,69,.85);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    font-size: .9rem;
+  }
 }
+

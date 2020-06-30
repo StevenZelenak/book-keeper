@@ -27,10 +27,13 @@ const deleteBook = (bookId) => axios.delete(`${baseUrl}/books/${bookId}.json`);
 
 const putBook = (bookId, updatedBook) => axios.put(`${baseUrl}/books/${bookId}.json`, updatedBook);
 
+const patchBook = (bookId, updatedFavoriteValue) => axios.patch(`${baseUrl}/books/${bookId}.json`, { isFavorite: updatedFavoriteValue });
+
 export default {
   getBooksByUid,
   getSingleBook,
   postBook,
   deleteBook,
   putBook,
+  patchBook,
 };
