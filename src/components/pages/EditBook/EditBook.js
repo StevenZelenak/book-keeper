@@ -26,7 +26,6 @@ class EditBook extends React.Component {
     bookType: '',
     bookGenre: '',
     bookStatus: '',
-    bookFavorite: false,
     bookNarrator: '',
     genreName: '',
     statusName: '',
@@ -54,7 +53,6 @@ class EditBook extends React.Component {
                       bookType: book.typeId,
                       bookGenre: book.genreId,
                       bookStatus: book.statusId,
-                      bookFavorite: false,
                       bookNarrator: book.narrator,
                       types,
                       genres,
@@ -102,10 +100,6 @@ class EditBook extends React.Component {
   statusChange = (e) => {
     e.preventDefault();
     this.setState({ bookStatus: e.target.id });
-  }
-
-  favoriteChange = (e) => {
-    this.setState({ bookFavorite: e.target.checked });
   }
 
   narratorChange = (e) => {
@@ -200,16 +194,6 @@ class EditBook extends React.Component {
               value={bookNarrator}
               onChange={this.narratorChange}
             />
-          </div>
-          <div className="form-group form-check">
-            <input
-              type="checkbox"
-              className="form-check-input"
-              id="book-favorite"
-              checked={bookFavorite}
-              onChange={this.favoriteChange}
-              />
-            <label className="form-check-label" htmlFor="book-wasFulfilling">Favorite</label>
           </div>
           <div className="d-flex row justify-content-center">
           <div className="form-group mx-3" >
