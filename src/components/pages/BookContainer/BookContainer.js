@@ -8,6 +8,7 @@ import bookData from '../../../helpers/data/bookData';
 import typeData from '../../../helpers/data/typeData';
 import genreData from '../../../helpers/data/genreData';
 import statusData from '../../../helpers/data/statusData';
+import Filter from '../../shared/Filter/Filter';
 
 class BookContainer extends React.Component {
   state = {
@@ -15,6 +16,8 @@ class BookContainer extends React.Component {
     types: [],
     genres: [],
     statuses: [],
+    showComponentFilter: false,
+    startFilter: false,
   }
 
   getBooks = () => {
@@ -65,6 +68,22 @@ class BookContainer extends React.Component {
       .catch((err) => console.error('unable to patch favorite', err));
   }
 
+  enableFilter = () => {
+    this.setState({ showComponentFilter: true });
+  }
+
+  disableFilter = () => {
+    this.setState({ showComponentFilter: false });
+  }
+
+  filterFav = () => {
+    this.setState({ startFilter: true });
+  }
+
+  resetFilter = () => {
+    this.setState({ startFilter: false });
+  }
+
   render() {
     const {
       books,
@@ -81,12 +100,24 @@ class BookContainer extends React.Component {
            updateFavorite={this.updateFavorite}
            />
     ));
+    const buildBookCardsFavorites = books.map((book) => (
+      book.isFavorite ? <BookCard key={book.id} book={book}
+      type={types.map((type) => (type.id === book.typeId ? type.name : false))}
+      genre={genres.map((genre) => (genre.id === book.genreId ? genre.name : false))}
+      status={statuses.map((status) => (status.id === book.statusId ? status.name : false))}
+      removeBook={this.removeBook}
+      updateFavorite={this.updateFavorite}
+      /> : ''
+    ));
 
     if (this.componentDidMount) {
       return (
       <div className="BookContainer">
+        <div className="filter-div">
+      { this.state.showComponentFilter ? <Filter resetFilter={ this.resetFilter } filterFav={this.filterFav} disableFilter={this.disableFilter}/> : <button className="btn btn-primary mt-3" onClick={this.enableFilter}>Filter</button> }
+        </div>
       <div className="d-flex flex-wrap mt-5">
-          {buildBookCards}
+          { this.state.startFilter ? buildBookCardsFavorites : buildBookCards }
         </div>
       </div>
       );
