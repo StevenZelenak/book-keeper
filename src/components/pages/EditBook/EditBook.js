@@ -147,7 +147,6 @@ class EditBook extends React.Component {
       bookName,
       bookImage,
       bookAuthor,
-      bookFavorite,
       bookNarrator,
     } = this.state;
 
