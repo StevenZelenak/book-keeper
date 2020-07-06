@@ -14,7 +14,7 @@ class BookCard extends React.Component {
     const { book, removeBook, updateFavorite } = this.props;
     const editBook = `/edit/${book.id}`;
     return (
-      <div className="BookCard col-sm-12 col-md-6 col-lg-3 mb-2">
+      <div className="BookCard col-sm-12 col-md-6 col-lg-3 mb-3">
         <div id={book.id} className="card">
           <div className="card-header">
             <div className="d-flex align-items-center">

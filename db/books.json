@@ -1,7 +1,7 @@
 {
   "book1":{
   "uid": "u7WEk9MPFIR5cpNM1GlGEjORafE2",
-  "imageUrl": "",
+  "imageUrl": "https://m.media-amazon.com/images/I/41UZeCEKOBL.jpg",
   "name": "Dune",
   "author": "Frank Herbert",
   "typeId": "type1",
@@ -12,7 +12,7 @@
   },
   "book2":{
   "uid": "u7WEk9MPFIR5cpNM1GlGEjORafE2",
-  "imageUrl": "",
+  "imageUrl": "https://m.media-amazon.com/images/I/51EswRvm1VL.jpg",
   "name": "The Forever War",
   "author": "Joe Haldeman",
   "typeId": "type3",
@@ -23,7 +23,7 @@
   },
   "book3":{
   "uid": "1234",
-  "imageUrl": "",
+  "imageUrl": "https://m.media-amazon.com/images/I/51c6PKzjPLL.jpg",
   "name": "The Three Body Problem",
   "author": "Liu Cixin",
   "typeId": "type1",
@@ -34,7 +34,7 @@
   },
   "book4":{
   "uid": "1234",
-  "imageUrl": "",
+  "imageUrl": "https://m.media-amazon.com/images/I/51Dlo2heMcL.jpg",
   "name": "Spellmonger",
   "author": "Terry Mancour",
   "typeId": "type1",
@@ -45,7 +45,7 @@
   },
   "book5":{
   "uid": "u7WEk9MPFIR5cpNM1GlGEjORafE2",
-  "imageUrl": "",
+  "imageUrl": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1468198764l/30985483._SY475_.jpg",
   "name": "Cast Under an Alien Sun",
   "author": "Olan Thorensen",
   "typeId": "type1",
@@ -56,7 +56,7 @@
   },
   "book6":{
   "uid": "u7WEk9MPFIR5cpNM1GlGEjORafE2",
-  "imageUrl": "",
+  "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/91jBdaRVqML.jpg",
   "name": "The Fellowship of the Ring",
   "author": "J. R. R. Tolkien",
   "typeId": "type1",
@@ -67,7 +67,7 @@
   },
   "book7":{
   "uid": "1234",
-  "imageUrl": "",
+  "imageUrl": "https://m.media-amazon.com/images/I/51Xi4ySeeyL.jpg",
   "name": "Dreams From My Father",
   "author": "Barack Obama",
   "typeId": "type2",
@@ -78,7 +78,7 @@
   },
   "book8":{
   "uid": "u7WEk9MPFIR5cpNM1GlGEjORafE2",
-  "imageUrl": "",
+  "imageUrl": "https://ih1.redbubble.net/image.497357730.1091/flat,750x,075,f-pad,750x1000,f8f8f8.u2.jpg",
   "name": "Dracula",
   "author": "Bram Stoker",
   "typeId": "type3",
@@ -89,7 +89,7 @@
   },
   "book9":{
   "uid": "u7WEk9MPFIR5cpNM1GlGEjORafE2",
-  "imageUrl": "",
+  "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/41cSDCxHoWL.jpg",
   "name": "Empires of Light",
   "author": "Jill Jonnes",
   "typeId": "type2",
@@ -100,7 +100,7 @@
   },
   "book10":{
   "uid": "u7WEk9MPFIR5cpNM1GlGEjORafE2",
-  "imageUrl": "",
+  "imageUrl": "https://prodimage.images-bn.com/pimages/9780316452502_p0_v4_s1200x630.jpg",
   "name": "Children of Time",
   "author": "Adrian Tchaikovsky",
   "typeId": "type1",

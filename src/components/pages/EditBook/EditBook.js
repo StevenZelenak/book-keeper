@@ -152,7 +152,7 @@ class EditBook extends React.Component {
 
     return (
       <div className="NewScat col-12">
-        <h1>Editing Book {this.state.bookName}</h1>
+        <h1 className="mt-3" >Editing Book {this.state.bookName}</h1>
         <form className="col-6 offset-3 text-left">
           <div className="form-group">
             <label htmlFor="book-name">Name</label>

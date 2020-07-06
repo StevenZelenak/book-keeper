@@ -116,7 +116,7 @@ class BookContainer extends React.Component {
         <div className="filter-div">
       { this.state.showComponentFilter ? <Filter resetFilter={ this.resetFilter } filterFav={this.filterFav} disableFilter={this.disableFilter}/> : <button className="btn btn-primary mt-3" onClick={this.enableFilter}>Filter</button> }
         </div>
-      <div className="d-flex flex-wrap mt-5">
+      <div className="d-flex flex-wrap mt-3">
           { this.state.startFilter ? buildBookCardsFavorites : buildBookCards }
         </div>
       </div>

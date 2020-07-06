@@ -122,7 +122,7 @@ class NewBook extends React.Component {
 
     return (
       <div className="NewBook col-12">
-        <h1>New Book</h1>
+        <h1 className="mt-3">Create A Book</h1>
         <form className="col-6 offset-3 text-left">
           <div className="form-group">
             <label htmlFor="book-name">Name</label>
