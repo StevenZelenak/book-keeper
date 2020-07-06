@@ -15,7 +15,7 @@
 
 ### Description:
 ##### "Your Digital Library"
-> Book Keeper is a digital library where user can log in via Google-Login and store all their books digitally. The user upon login is shown an empty screen from here they can add books and update or delete those books. The purpose behind creating this app was to keep the user informed of what books they owned no matter where they went. You go to a flea market and not sure if you own that book well now you can just pull up your library on your phone and check.
+> Book Keeper is a digital library where users can log in via Google-Login and store all their books digitally. The users upon login are shown an empty screen, from here they can add books and update or delete those books. The purpose behind creating this app was to keep the users informed of what books they owned no matter where they went. You go to a flea market and not sure if you own that book well now you can just pull up your library on your phone and check.
 
 #### Landing Page for Unauthenticated Users
 <img src="https://i.imgur.com/yWTt3iP.png">
@@ -42,7 +42,7 @@ Or, Run Locally:
 1. After updating your files you will need to head over to firebase and setup a project
 1. Once your project is created you need to grab some info from firebase under the `firebase SDK snippet`
 1. This info is inserted into the a file called `apiKeys.json` which there is an example of in src/helpers
-1. The very last thing you need to do is make sure google authentication is on in your firebase project
+1. The very last things you need to do is make sure google authentication is on in your firebase project and upload your data from the `db folder` to firebase
 1. Enter command: `npm start`
 1. The project will automatically render in your browser at url: `http://localhost:8080`
 
