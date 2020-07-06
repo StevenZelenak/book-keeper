@@ -13,8 +13,8 @@ loginClickEvent = (e) => {
 
 render() {
   return (
-    <div className="Auth align-items-center">
-      <h1>Welcome to Book Keepr</h1>
+    <div className="Auth d-flex align-items-center justify-content-center flex-column">
+      <h1>Welcome to Book Keeper</h1>
       <h3>Where books are forever</h3>
       <button className="btn btn-primary" onClick={this.loginClickEvent}>Google Login</button>
     </div>
